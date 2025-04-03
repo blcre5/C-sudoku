@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kcolo\\Documents\\Csharp Code\\test project\\test project.csproj": {}
+    "C:\\Users\\kcolo\\Documents\\Csharp Code\\C-sudoku\\test project\\test project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kcolo\\Documents\\Csharp Code\\test project\\test project.csproj": {
+    "C:\\Users\\kcolo\\Documents\\Csharp Code\\C-sudoku\\test project\\test project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kcolo\\Documents\\Csharp Code\\test project\\test project.csproj",
+        "projectUniqueName": "C:\\Users\\kcolo\\Documents\\Csharp Code\\C-sudoku\\test project\\test project.csproj",
         "projectName": "test project",
-        "projectPath": "C:\\Users\\kcolo\\Documents\\Csharp Code\\test project\\test project.csproj",
+        "projectPath": "C:\\Users\\kcolo\\Documents\\Csharp Code\\C-sudoku\\test project\\test project.csproj",
         "packagesPath": "C:\\Users\\kcolo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kcolo\\Documents\\Csharp Code\\test project\\obj\\",
+        "outputPath": "C:\\Users\\kcolo\\Documents\\Csharp Code\\C-sudoku\\test project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kcolo\\AppData\\Roaming\\NuGet\\NuGet.Config"

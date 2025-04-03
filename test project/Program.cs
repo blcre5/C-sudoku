@@ -32,16 +32,7 @@ class Program
             Console.WriteLine();
         }
 
-        Console.WriteLine("Sudoku Puzzle Generated 1");
-
-        for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-            {
-                Console.Write(SudokuPuzzle2[i, j]);
-            }
-            Console.WriteLine();
-        }
+        
     }
 
 
