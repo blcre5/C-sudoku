@@ -1,5 +1,4 @@
 ﻿
-//numberPicker();
 using System;
 using System.Collections.Concurrent;
 using System.Globalization;
@@ -20,7 +19,7 @@ class Program
         //var SudokuPuzzle = program.GenerateLists();
         var SudokuPuzzle = program.MakeTable();
 
-        var SudokuPuzzle2 = program.MakeTable(); // this is to show the original table before we start solving it, if needed
+        //var SudokuPuzzle2 = program.MakeTable(); // this is to show the original table before we start solving it, if needed
 
 
         for (int i = 0; i < 9; i++)
@@ -31,56 +30,9 @@ class Program
             }
             Console.WriteLine();
         }
-
-        
     }
-
-
 
     int[,] largeArray = new int[9, 9];
-
-    public int[,] GenerateLists()
-    {
-        int[,] largeArray = new int[9, 9];
-        List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        int[] row = new int[9];
-        int[] column = new int[9];
-
-        Random random = new Random();
-        int randomX = random.Next(0, largeArray.GetLength(0));
-        int randomY = random.Next(0, largeArray.GetLength(1));
-        int randomNum = numbers[random.Next(0, numbers.Count)];
-
-        largeArray[0, 0] = randomNum;
-        foreach (int x in numbers)
-        {
-            foreach (int y in numbers)
-            {
-                foreach (int number in numbers)
-                {
-                    if (ValidNumber(largeArray, x, y, number) && largeArray[x, y] == 0)
-                    {
-                        largeArray[x, y] = number;
-                        break;
-                    }
-                }
-            }
-        }
-        // see what we did
-        
-        for (int i = 0; i < 9; i++)
-        {
-            for (int j = 0; j < 9; j++)
-            {
-                Console.Write(largeArray[i, j]);
-            }
-            Console.WriteLine();
-        }
-        Console.WriteLine();
-
-
-        return largeArray;
-    }
 
 
     public static bool DetectZeroes(int[,] largeArray)
@@ -101,7 +53,7 @@ class Program
         int gridy = gridcoord[y / 3];
         return (gridx, gridy);
     }
-
+/*
     public bool ValidNumber(int[,] largeArray, int currentx, int currenty, int randomNum)
     {
         List<int> currentRow = new List<int>();
@@ -127,7 +79,6 @@ class Program
         {
             for (int j = gridy; j < gridy + 3; j++)
             {
-
                 currentGrid.Add(largeArray[i, j]);
             }
         }
@@ -160,7 +111,7 @@ class Program
 
         return leftRight && upDown && subgrid;
 
-    }
+    } */
 
 
 
@@ -168,7 +119,7 @@ class Program
 
     public bool errorCheck(int[,] largeArray, List<int> newRow, int setRow)
     {
-        //List<int> currentRow = new List<int>();
+        
         List<int> currentColumn = new List<int>();
         List<int> currentGrid = new List<int>();
 
@@ -179,9 +130,7 @@ class Program
         List<int> duplicatesGrid = new List<int>();
 
         int[] gridcoord = new int[3] { 0, 3, 6 };
-        int[] OriginalNumbers = new int[9] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-
+        
         List<bool> upside = new List<bool>();
         List<bool> subgrid = new List<bool>();
 
@@ -208,7 +157,6 @@ class Program
                 {
                     for (int j = gridUD; j < gridUD + 3; j++)
                     {
-
                         currentGrid.Add(largeArray[i, j]);
                     }
                 }
@@ -225,17 +173,10 @@ class Program
                 }
                 if (duplicatesGrid.Any())//duplicates has any values, 
                 {
-                    subgrid.Add(false);
+                    return false;
                 }
-                else //duplicates has no values
-                {
-                    subgrid.Add(true);
-                }
-
             }
         }
-
-
 
         for (int row = 0; row < 9; row++)
         {
@@ -260,19 +201,10 @@ class Program
             }
             if (duplicatesColumn.Any())//duplicates has any values, 
             {
-                upside.Add(false);
-            }
-            else //duplicates has no values
-            {
-                upside.Add(true);
+                return false;
             }
         }
-
-
-        bool gridsTrue = subgrid.All(b => b);
-        bool columnsTrue = upside.All(b => b);
-
-        return gridsTrue && columnsTrue;
+        return true;
     }
 
     public int[,] MakeTable()
@@ -287,19 +219,12 @@ class Program
             for (int i = 0; i < 9; i++)
             {
                 Table[0, i] = numbers[i];
-                //Console.Write(numbers[i]);
             }
-            //Console.WriteLine();
-
+            
             for (int row = 1; row < 9; row++)
             {
                 ScrambleList(numbers);
-                /*
-                foreach (int value in numbers)
-                {
-                    Console.Write(value);
-                }
-                Console.WriteLine(); */
+                
                 for (int col = 0; col < 9; col++)
                 {
                     if (errorCheck(Table, numbers, row))
@@ -308,20 +233,12 @@ class Program
                     }
                     else
                     {
-                        //ClearPreviousLine();
-                        //Console.WriteLine();
                         row--;
                         break;
-
                     }
                 }
             }
-
-
         } while (DetectZeroes(Table));
-
-
-
         return Table;
     }
     public static void ScrambleList<T>(List<T> list)
